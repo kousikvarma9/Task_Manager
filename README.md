@@ -31,9 +31,13 @@ uvicorn app:app --reload
 ## Project Structure
 
 task_manager/
+
 ├── app.py
+
 ├── database.py
+
 ├── models.py
+
 ├── requirements.txt
 ├── static/
 ├── templates/
