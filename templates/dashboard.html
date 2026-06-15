@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="navbar">
+        <a href="/dashboard">Dashboard</a>
+<a href="/logout">Logout</a>
+    </div>
+
+    <h1>Task Manager</h1>
+
+    <div class="stats">
+
+        <div class="stat-box">
+            <h3>Total</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Completed</h3>
+            <p>{{ completed }}</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Pending</h3>
+            <p>{{ pending }}</p>
+        </div>
+
+    </div>
+
+    <form class="task-form" action="/add-task" method="post">
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Enter a new task..."
+            required
+        >
+
+        <button class="add-btn" type="submit">
+            Add Task
+        </button>
+
+    </form>
+
+    {% for task in tasks %}
+
+    <div class="task-card">
+
+        <div>
+
+            {% if task.completed %}
+                <span class="completed">
+                    ✅ {{ task.title }}
+                </span>
+            {% else %}
+                {{ task.title }}
+            {% endif %}
+
+        </div>
+
+        <div class="task-actions">
+
+            {% if not task.completed %}
+            <a href="/complete-task/{{ task.id }}">
+                <button class="complete-btn">
+                    Complete
+                </button>
+            </a>
+            {% endif %}
+
+            <a href="/delete-task/{{ task.id }}">
+                <button class="delete-btn">
+                    Delete
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
