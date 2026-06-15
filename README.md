@@ -39,6 +39,9 @@ task_manager/
 ├── models.py
 
 ├── requirements.txt
+
 ├── static/
+
 ├── templates/
+
 └── README.md
