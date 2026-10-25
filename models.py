@@ -10,6 +10,7 @@ class User(Base):
     password = Column(String)
 
 
+
 class Task(Base):
     __tablename__ = "tasks"
 
